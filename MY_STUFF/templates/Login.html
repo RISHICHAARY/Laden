@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LADEN | Login</title>
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Login_css.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Signup_css.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+</head>
+<body>
+	<header>
+	    <div class ="Smb">
+	    	<ul id="Nb">
+	    		<li><div class="Logo"><img src="{% static 'images/Logo.png' %}" class="Lg"></li>
+	    		<li><a href="{% url 'Home' %}"><i class="fa-solid fa-house"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>HOME</b></p></a></li>
+		</ul>
+	    </div>
+	</header>
+    <div class="animated-background">
+		<div class="row" style="justify-content:center;">
+			<div class="column side" style="margin-top:7.8em;margin-bottom:11em;">
+				<img src="{% static 'images/Logo.png' %}" style="margin-top: 15em;margin-left: 5em;float: left;">
+				<p style="color:#fae7d5;padding-top: 3em;padding-left: 4em;font-size: 4em; margin: 0em;">WELCOME!!</p>
+				<p style="color:#fae7d5;padding-top: 0em;padding-left: 9em;font-size: 3em;margin: 0em;">A Whole New World is Awaiting For You And Your Needs</p>
+			</div>
+			<div class="column middle" style="margin-top:22em;text-align:right;">
+				<form method="POST">
+					{% csrf_token %}
+					<input type="email" name="Userid" placeholder="USERID" width="30" required><br>
+					<input type="PASSWORD" name="Pass" placeholder="PASSWORD"><br>
+					<b><input type="submit" value="LOGIN" style="border:none;outline:none;border-radius:0.2em;"></b><br>
+					{%if User == "NotAuthenticated"%}
+					<script>
+						alert("Enter UserId and Click Forgot Password To Get Your Password Through Mail.");
+					</script>
+					<h4 style="padding-left: 4.5em; color: red;">Inavalid Credentials.</h4>
+					<a href="{% url 'FogPas' %}"><h5 style="padding-left: 7em;">Forgot Password?</h5></a>
+					{% else %}
+					<a href="{% url 'Signin' %}"><h5>Don't have an account? SignUp.</h5></a>
+					{% endif %}
+				</form>
+			</div>
+	</div>
+</body>
+</html>

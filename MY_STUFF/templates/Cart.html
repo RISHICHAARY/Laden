@@ -1,0 +1,86 @@
+{% extends 'NavBar.html' %}
+{% block title %}LADEN | Cart{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block meta_description1 %}active{% endblock %}
+{% block meta_description11 %}active{% endblock %}
+{% block meta_description12 %}active{% endblock %}
+{% block meta_description2 %}{% endblock %}
+{% block meta_description21 %}{% endblock %}
+{% block meta_description3 %}{% endblock %}
+{% block meta_description4 %}{% endblock %}
+{% block meta_description41 %}{% endblock %}
+{% block meta_description5 %}{% endblock %}
+{% block meta_description51 %}{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<header>
+	    <div class ="Smb">
+	    	{% block content %}
+	    </div>
+	</header>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Cart_Css.css' %}">
+    <div>
+		{% if State == "Empty" %}
+		<div style="margin-top:3em;text-align: center;">
+			<P style="margin:0;margin-right:0.5em;font-size:5em;display: inline;">Your Cart Is Empty</P>
+			<i class="fa-solid fa-cart-plus" style="margin:0;font-size:5em;display: inline;"></i>
+		</div>
+		{% elif State == "Ordered" %}
+		<div style="margin-top:3em;text-align: center;">
+			<P style="margin:0;margin-right:0.5em;font-size:5em;display: inline;">Order Success</P>
+			<i class="fa-solid fa-thumbs-up" style="margin:0;font-size:5em;display: inline;"></i><br>
+			<P style="margin:0;margin-right:0.5em;font-size:2em;display: inline;">Your Seller Will Contact Regarding Delivery</P><br>
+			<P style="margin:0;margin-right:0.5em;font-size:5em;display: inline;">Continue Shopping</P>
+			<i class="fa-solid fa-cart-plus" style="margin:0;font-size:5em;display: inline;"></i>
+		</div>
+		{% else %}		
+	    	{% for i in Prds %}
+			{% if i.Cata == "MOBILE" %}
+			<div class="rowmain" style="margin-top:0em;">
+				<div class="colimg1">
+					<img src="..{{i.Image}}" style="display:block;margin-left: auto;margin-right: auto;">
+				</div>
+				<div class="colobj">
+					<P class="PN" style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P>
+					<p class="PP" style="margin-bottom:0.2em;margin-top:0.5em;">Rs: {{i.Price}}/-</p >
+					<p class="PP" style="margin-bottom:0.2em;margin-top:0em;">Quantity: {{i.Quant}}</p >
+					<p class="PP" style="margin-bottom:1em;margin-top:0em;">Total: {{i.TP}}/-</p >
+					<form method="POST" action="{% url 'View'%}" target="blank" style="display:inline;">{% csrf_token %}
+						<button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button>
+					</form>
+					<form method="POST" action="{% url 'Remove'%}" style="display:inline;">{% csrf_token %}
+						<button class="Rem" type="submit" name="Remdet" value="{{Name}},{{User}},{{Type}},{{i.Seller}},{{i.Cata}},{{i.Name}},{{i.Quant}},{{Prds}}">REMOVE<i class="fa-solid fa-trash" style="margin-left:0.7em;"></i></button>
+					</form>
+				</div>
+			</div>
+			{% else %}
+			<div class="rowmain" style="margin-top:0em;">
+				<div class="colimg">
+					<img src="../Media/{{i.Image}}" width="80%" height="80%" style="display:block;margin-left: auto;margin-right: auto;">
+				</div>
+				<div class="colobj">
+					<P class="PN" style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P>
+					<p class="PP" style="margin-bottom:0.2em;margin-top:0.5em;">Rs: {{i.Price}}/-</p >
+					<p class="PP" style="margin-bottom:0.2em;margin-top:0em;">Quantity: {{i.Quant}}</p >
+					<p class="PP" style="margin-bottom:1em;margin-top:0em;">Total: {{i.TP}}/-</p >
+					<form method="POST" action="{% url 'View'%}" target="blank" style="display:inline;">{% csrf_token %}
+						<button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button>
+					</form>
+					<form method="POST" action="{% url 'Remove'%}" style="display:inline;">{% csrf_token %}
+						<button class="Rem" type="submit" name="Remdet" value="{{Name}},{{User}},{{Type}},{{i.Seller}},{{i.Cata}},{{i.Name}},{{i.Quant}},{{Prds}}">REMOVE<i class="fa-solid fa-trash" style="margin-left:0.7em;"></i></button>
+					</form>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			<form method="POST" action="{% url 'CheckOut'%}" style="display:inline;float:right;margin:1em;font-size:1.5em;">{% csrf_token %}
+				<button class="Cko" type="submit" name="Check" value="{{Name}},{{User}},{{Type}}">CHECK OUT<i class="fa-solid fa-money-bill" style="margin-left:0.7em;"></i></button>
+			</form>
+		{% endif %}
+	    </div>
+</body>
+</html>{% endblock %}

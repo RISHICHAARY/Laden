@@ -1,0 +1,249 @@
+{% extends 'NavBar.html' %}
+{% block title %}LADEN | Home{% endblock %}
+{% block meta_description %}active{% endblock %}
+{% block meta_description1 %}{% endblock %}
+{% block meta_description11 %}{% endblock %}
+{% block meta_description12 %}{% endblock %}
+{% block meta_description2 %}{% endblock %}
+{% block meta_description21 %}{% endblock %}
+{% block meta_description3 %}{% endblock %}
+{% block meta_description4 %}{% endblock %}
+{% block meta_description41 %}{% endblock %}
+{% block meta_description5 %}{% endblock %}
+{% block meta_description51 %}{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<header>
+	    <div class ="Smb">
+	    	<ul>
+	    		{% block content %}
+	    		<link rel="stylesheet" type="text/css" href="{% static 'css/Hame_css.css' %}">
+				<li style="margin:0;padding:0;background-color: #3894a1;width:100%;">
+					<ul class="SecNav" style="padding:0;background-color: #3894a1;">
+						{% if Page == "Grocery" %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Grocery'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i class="fa-solid fa-carrot" id="secnavp" style="display: inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Groceries</p></button>
+			    			</form>
+		    			</li>
+						{% else %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Grocery'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-carrot" style="display: inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;color:white;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Groceries</p></button>
+			    			</form>
+		    			</li>
+			    		{% endif %}
+			    		{% if Page == "Clothes" %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Clothes'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i class="fa-solid fa-shirt" id="secnavp" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Clothes</p></button>
+			    			</form>
+		    			</li>
+			    		{% else %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Clothes'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-shirt" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Clothes</p></button>
+			    			</form>
+		    			</li>
+			    		{% endif %}
+		    			{% if Page == "Mobile" %}
+		    			<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Mobile'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i class="fa-solid fa-mobile" id="secnavp" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Mobiles</p></button>
+			    			</form>
+		    			</li>
+		    			{% else %}
+		    			<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Mobile'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-mobile" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Mobiles</p></button>
+			    			</form>
+		    			</li>
+		    			{% endif %}
+			    		{% if Page == "Laptop" %}
+			    		<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Laptop'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i class="fa-solid fa-laptop" id="secnavp" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Laptops</p></button>
+			    			</form>
+		    			</li>
+			    		{% else %}
+			    		<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Laptop'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-laptop" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Laptops</p></button>
+			    			</form>
+		    			</li>
+			    		{% endif %}
+			    		{% if Page == "Accessories" %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Accessories'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i class="fa-solid fa-headphones-simple" id="secnavp" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Accessories</p></button>
+			    			</form>
+		    			</li>
+			    		{% else %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Accessories'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-headphones-simple" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Accessories</p></button>
+			    			</form>
+		    			</li>
+			    		{% endif %}
+			    		<li style="margin:0;display:block;">
+							<form method="POST" action="{% url 'Sr'%}" >{% csrf_token %}
+								<input type="text" name="ser" id="tags" placeholder="Search..." style="display:inline;padding-right:0;padding:0.5em;margin:0.5em;"size="52">
+								<input type="hidden" name="Home" value="{{Name}},{{User}},{{Type}}">
+							</form>
+					    </li>
+			    		{% if Page == None %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Accessories'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home" class="SecnavAct"><i id="secnavp" class="fa-solid fa-tag" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">On Offer</p></button>
+			    			</form>
+		    			</li>
+			    		{% else %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Home'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-tag" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">On Offer</p></button>
+			    			</form>
+		    			</li>
+			    		{% endif%}
+			    		{% if Name == "1" %}
+			    		{% else %}
+						{% if Page == "OA" %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Oa'%}" >{% csrf_token %}
+			    				<button id="Secbtact" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-clock-rotate-left" id="secnavp" style="display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p id="secnavp" style="display:inline;padding:0;margin:0;padding-right:0.5em;">Order Again</p></button>
+			    			</form>
+		    			</li>
+						{% else %}
+						<li style="margin:0;display:block;">
+		    				<form method="POST" action="{% url 'Oa'%}" >{% csrf_token %}
+			    				<button id="Secbt" value="{{Name}},{{User}},{{Type}}" name="Home"><i class="fa-solid fa-clock-rotate-left" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Order Again</p></button>
+			    			</form>
+		    			</li>
+						{% endif %}
+			    		{% endif%}
+			    	</ul>
+				</li>
+			</ul>
+	    </div>
+	</header>
+	{% if Page == "Mobile" %}
+	<div class="rowprod" style="margin-top:0.5em;">
+		{% for i in Details %}
+				<div class="col" style="margin-top:0em;"><img src="..{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}"><p style="display:inline;">VIEW</p><i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	</div>
+	{% elif Page == "Laptop"%}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+				<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	</div>
+	{% elif Page == "Accessories"%}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+				<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	</div>
+	{% elif Page == "Grocery"%}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+				<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	</div>
+	{% elif Page == "Clothes"%}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+				<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	</div>
+	{% elif Page == "OA"%}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+	{% if i.Cata == "MOBILE" %}
+	<div class="col" style="margin-top:0em;"><img src="..{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+	  <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+	{% else %}
+		<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+	{% endif %}	
+	{% endfor %}
+	</div>
+	{% elif Page == "SR"%}
+	{% if Res == "Yes" %}
+	<div class="rowprod" style="margin-top:0.5em;">
+	{% for i in Details %}
+	{% if i.Cata == "MOBILE" %}
+	<div class="col" style="margin-top:0em;"><img src="..{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+	  <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+	{% else %}
+		<div class="col" style="margin-top:0em;"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p ><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+	{% endif %}	
+	{% endfor %}
+	</div>
+	{% else %}
+	<div style="margin-top:3em;text-align: center;">
+		<P style="margin:0;margin-right:0.5em;font-size:5em;display: inline;">No Results Found</P>
+		<i class="fa-solid fa-magnifying-glass-minus" style="margin:0;font-size:5em;display: inline;"></i>
+	</div>
+	{% endif %}
+	{% elif Page == None %}
+    <div class="rowprod1">
+    	<div class="colp" style="border:0.5em solid #d2001a">
+    		<h2 style="margin:0;">LADEN SUPER SAVER DAY'S</h2>
+    		<h5 style="margin:0;">From 1<sup>ST</sup> JAN TO 31<sup>ST</sup> DEC 2023</h5>
+    		<img src="{% static 'images/Offer.png' %}">
+    		<h6 style="margin:0;">*T&C Apply.</h6>
+        </div>
+	</div>
+	<div style="display:block; text-align:center;margin-top:1.5em;"><h1 style="text-decoration:underline 0.1em solid;text-underline-position:under;">TOP PRODUCTS</h1></div>
+	<div class="rowprod" style="margin-top:0.5em;">
+		{% for i in Details %}
+				<div class="col"><img src="..{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p >
+		  <form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form>
+		</div>
+		{% endfor %}
+		{% for i in Details1 %}
+				<div class="col"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+		{% for i in Details2 %}
+				<div class="col"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+		{% for i in Details3 %}
+				<div class="col"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+		{% for i in Details4 %}
+				<div class="col"><img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;
+		  margin-right: auto;"><P style="margin:0;margin-top:0.5em">{{i.Brand}}  {{i.Name}}</P><p style="margin-bottom:1em;margin-top:0.5em;">Rs: {{i.Price}}/-</p><form method="POST" action="{% url 'View'%}" target="blank">{% csrf_token %}
+        <button class="Vew" type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em;"></i></button></form></div>
+		{% endfor %}
+	{% else %}
+	{% endif %}
+</body>
+</html>
+{% endblock %}

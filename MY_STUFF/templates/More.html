@@ -1,0 +1,62 @@
+{% extends 'NavBar.html' %}
+{% block title %}LADEN | More{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block meta_description1 %}{% endblock %}
+{% block meta_description2 %}{% endblock %}
+{% block meta_description21 %}{% endblock %}
+{% block meta_description3 %}{% endblock %}
+{% block meta_description4 %}{% endblock %}
+{% block meta_description41 %}{% endblock %}
+{% block meta_description5 %}active{% endblock %}
+{% block meta_description51 %}active{% endblock %}
+{% load static %}
+{% block content %}
+</header>
+<body>
+    {% if Type == "ceo" %}
+    <div style="margin-left:1em;font-family: 'Montserrat', sans-serif;">
+        <h2>ALTER USERS:</h2>
+        <form method="POST" action="{% url 'DelUsr'%}" style="font-size:1em;">{% csrf_token %}
+            <input type="email" name="Delus" placeholder="Enter Userid To delete" style="font-size:1.5em;margin-left:5em;display:inline;border:none;outline:none;border-bottom:solid 0.1em;background:transparent;">
+            <button style="border:none;outline:none;border-radius:0.2em;background-color:red;padding:0.5em;" value="{{Name}},{{User}},{{Type}}" name="More"><p style="display:inline;;font-size:1.5em;margin-right:0.5em;" >DELETE</p><i class="fa-solid fa-trash" style="font-size:1.5em;margin-left:0.2em;display:inline;"></i></button>
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+    <div style="margin-left:1em;font-family: 'Montserrat', sans-serif;">
+        <h2>EDIT PRODUCTS:</h2>
+        <div style="display:table;">
+            {% for i in P %}
+            <div style="display:table-row;">
+                <div style="display:table-cell;margin:0 0.5em;">
+                    <h3>{{i.Name}}</h3>
+                </div>
+                <form method="POST" action="{% url 'UpPrd'%}" style="font-size:1em;">{% csrf_token %}
+                    <div style="display:table-cell;margin:0 0.5em;">
+                        <input name="nup" type="text" value="{{i.Price}}" style="font-size:1.5em;margin-left:5em;display:inline;border:none;outline:none;border-bottom:solid 0.1em;background:transparent;">
+                    </div>
+                    <div style="display:table-cell;margin:0 0.5em;">
+                        {% if i.Offersts == "on" %}
+                        <input type="radio" name="Onoff{{i.Name}}"  checked="checked" value="on" required style="margin:0 1em;"><b><p style="display:inline; font-size:1.3em;">ON</p></b>
+                        <input type="radio" name="Onoff{{i.Name}}" value="off" required style="margin:0 1em;"><b><p style="display:inline; font-size:1.3em;">OFF</p></b>
+                        {% else %}
+                        <input type="radio" name="Onoff{{i.Name}}" value="on" required style="margin:0 1em;"><b><p style="display:inline; font-size:1.3em;">ON</p></b>
+                        <input type="radio" name="Onoff{{i.Name}}" checked="checked" value="off" required style="margin:0 1em;"><b><p style="display:inline; font-size:1.3em;">OFF</p></b>
+                        {% endif %}
+                    </div>
+                    <div style="display:table-cell;margin:0 0.5em;">
+                        <form method="POST" action="{% url 'UpPrd'%}" style="font-size:1em;">{% csrf_token %}
+                            <button name="Up" style="border:none;outline:none;border-radius:0.2em;background-color:#3894a1;padding:0.5em;margin:0 1em;" value="{{Name}},{{User}},{{Type}},{{i.Name}},{{i.Cata}},{{i.Seller}}"><p style="display:inline;;font-size:1.5em;margin-right:0.5em;" >UPDATE</p><i class="fa-solid fa-pen-nib" style="font-size:1.5em;margin-left:0.2em;display:inline;"></i></button>
+                    </div>
+                </form>
+                <div style="display:table-cell;margin:0 0.5em;">
+                    <form method="POST" action="{% url 'DelPrd'%}" style="font-size:1em;">{% csrf_token %}
+                        <button name="Dp" style="border:none;outline:none;border-radius:0.2em;background-color:red;padding:0.5em;margin:0 1em;" value="{{Name}},{{User}},{{Type}},{{i.Name}},{{i.Cata}},{{i.Seller}}"><p style="display:inline;;font-size:1.5em;margin-right:0.5em;" >DELETE</p><i class="fa-solid fa-trash" style="font-size:1.5em;margin-left:0.2em;display:inline;"></i></button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LADEN | Singup</title>
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Signup_css.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+</head>
+<body class="animated-background">
+	<div class="row">
+		<div class="column side">
+			<img src="{% static 'images/Logo.png' %}" style="margin-top: 15em;margin-left: 5em;float: left;">
+			<p style="color:#fae7d5;padding-top: 3em;padding-left: 4em;font-size: 4em; margin: 0em;">WELCOME!!</p>
+			<p style="color:#fae7d5;padding-top: 0em;padding-left: 9em;font-size: 3em;margin: 0em;">A Whole New World is Awaiting For You And Your Needs</p>
+		</div>
+		<div class="column middle">
+			<h3 style="font-size:2em; margin-left: 5em; margin-top: 1em;margin-bottom: 0;color:#fae7d5;display:inline-block;">Step-1</h3>
+			{% if Mv == 1 %}
+			<p style="display:inline;font-size: 0.9em;">(Step-2:OTP Verification)</p>
+			<p style="padding-left:7.5em;margin: 0;margin-left: 5em;font-size: 0.9em;color:red;">MailId You Entered Already Exist.</p>
+			{% else %}
+			<p style="display:inline;font-size: 0.9em;">(Step-2:OTP Verification)</p>
+			<p style="padding-left:6.3em;margin: 0;margin-left: 5em;font-size: 0.9em;">(OTP Will be sent to MailID You Enter.)</p>
+			{% endif %}
+			<h3 style="font-size:2em; margin-left: 5em; margin-top: 0.5em; margin-bottom: 0;color:#fae7d5;">Fill These Details:</h3>
+			<form id="Pd" method="POST">{% csrf_token %}
+				<input type="text" name="FirNme" width="30" placeholder="First Name" style="border-color:#fae7d5;" required autocomplete="no"><br>
+				<input type="text" name="LstNme" width="30" placeholder="Last Name" style="border-color:#fae7d5;" required autocomplete="no"><br>
+				<input type="range" name="Age" value="1" min="10" max="100" class="slider" id="myRange" required>
+				<p style="display: inline; font-size:1.5em;color:#fae7d5;">Age: <span id="demo"></span></p><br>
+				<input type="date" name="Dob" value="Date Of Birth" width="30" style="border:none;color: #fae7d5;" required><br>
+				<input type="radio" name="Gen" value="Male" required><b><p style="display:inline; font-size:1.3em;color: #fae7d5;">Male</p></b>
+				<input type="radio" name="Gen" value="Female" required><b><p style="display:inline; font-size:1.3em;color: #fae7d5;;">Female</p></b>
+				<input type="radio" name="Gen" value="Others" required><b><p style="display:inline; font-size:1.3em;color: #fae7d5;">Others</p></b><br>
+				<select name="country" width="30" style="border:none;" required>
+				    <option>select country</option>
+				    <option>India</option>
+				</select><br>
+				<input type="tel" name="Mob" width="30" placeholder="(+CC)Mobile Number" style="border: none;border-bottom: 0.1em solid; background: transparent; border-color:#fae7d5" required autocomplete="no"><br>
+				<input type="text" name="Mil" width="30" placeholder="E-Mail" style="border: none;border-bottom: 0.1em solid; background: transparent;border-color:#fae7d5" required autocomplete="no"><br>
+				<input type="text" name="address" width="30" placeholder="Deliver To" style="border: none;border-bottom: 0.1em solid; background: transparent;border-color:#fae7d5" required autocomplete="no"><br>
+				<input type="PASSWORD" name="pas" width="30" placeholder="Password" style="border: none;border-bottom: 0.1em solid; background: transparent;border-color:#fae7d5" required autocomplete="no"><br>
+				<input type="submit" name="Vrf" value="Validate Account" style="border:none;">
+				<script>
+					var slider = document.getElementById("myRange");
+					var output = document.getElementById("demo");
+					output.innerHTML = slider.value;
+
+					slider.oninput = function() {
+					  output.innerHTML = this.value;
+					}
+				</script>
+			</form>
+		</div>
+	</div>

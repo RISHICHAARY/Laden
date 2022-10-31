@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}{% endblock %}</title>
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lobster&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/beg_css.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+</head>
+<body>
+	<script>
+		if ( window.history.replaceState ) {
+		  window.history.replaceState( null, null, window.location.href );
+		}
+	</script>
+	<header>
+	    <div class ="Smb">
+	    	<ul class="Nul"> 
+	    		<li class="lgin">
+			    	<ul class="Nul">
+			    		<li><div class="Logo" style="padding:0;margin:0;padding-left:0.5em;"><img src="{% static 'images/Logo.png' %}" class="Lg"></div></li>
+			    		<li>
+			    			<form method="POST" action="{% url 'Home'%}" >{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Home" class="{% block meta_description %}{% endblock %}"><i class="fa-solid fa-house"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>HOME</b></p></button>
+			    			</form>
+			    		</li>
+			    		{% if Type == 'ceo' %}
+						<li>
+			    			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+			    				<button id="button" value="n,n,n,{{Name}},{{User}},{{Type}}" name="Cart" class="{% block meta_description1 %}{% endblock %}"><i class="fa-solid fa-cart-shopping"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>CART</b></p></button>
+			    			</form>
+			    		</li>
+			    		<li>
+			    			<form method="POST" action="{% url 'Orders'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Order" class="{% block meta_description2 %}{% endblock %}"><i class="fa-solid fa-folder-closed"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>ORDERS</b></p></button>
+			    			</form>
+			    		</li>
+			    		<li>
+			    		<form method="POST" action="{% url 'User'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Addu" class="{% block meta_description3 %}{% endblock %}"><i class="fa-solid fa-folder-closed"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>USERS</b></p></button>
+			    			</form>
+			    		</li>
+			    		<li>
+			    			<form method="POST" action="{% url 'Product'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Addp" class="{% block meta_description4 %}{% endblock %}"><i class="fa-solid fa-folder-closed"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>PRODUCTS</b></p></button>
+			    			</form>
+			    		</li>
+						<li>
+			    			<form method="POST" action="{% url 'More'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Mre" class="{% block meta_description5 %}{% endblock %}"><i class="fa-solid fa-bars"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>MORE</b></p></button>
+			    			</form>
+			    		</li>
+			    		{% elif Type == "seller" %}
+						<li>
+			    			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+			    				<button id="button" value="n,n,n,{{Name}},{{User}},{{Type}}" name="Cart" class="{% block meta_description11 %}{% endblock %}"><i class="fa-solid fa-cart-shopping"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>CART</b></p></button>
+			    			</form>
+			    		</li>
+			    		<li>
+			    			<form method="POST" action="{% url 'Orders'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Order" class="{% block meta_description21 %}{% endblock %}"><i class="fa-solid fa-folder-closed"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>ORDERS</b></p></button>
+			    			</form>
+			    		</li>
+			    		<li>
+			    			<form method="POST" action="{% url 'Product'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Addp" class="{% block meta_description41 %}{% endblock %}"><i class="fa-solid fa-folder-closed"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>PRODUCTS</b></p></button>
+			    			</form>
+			    		</li>
+						<li>
+			    			<form method="POST" action="{% url 'More'%}">{% csrf_token %}
+			    				<button id="button" value="{{Name}},{{User}},{{Type}}" name="Mre" class="{% block meta_description51 %}{% endblock %}"><i class="fa-solid fa-bars"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>MORE</b></p></button>
+			    			</form>
+			    		</li>
+			    		{% elif Type == "user" %}
+						<li>
+			    			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+			    				<button id="button" value="n,n,n,{{Name}},{{User}},{{Type}}" name="Cart" class="{% block meta_description12 %}{% endblock %}"><i class="fa-solid fa-cart-shopping"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>CART</b></p></button>
+			    			</form>
+			    		</li>
+			    		{% endif %}
+						{% if Name == "1" %}
+			    		<li style="float:right;" class="lgin"><a class="active1" href="{% url 'Login' %}"><p style=" display: inline-block;padding: 0; margin: 0; padding-right: 0.5em;"><b>LOGIN</b></p><i class="fa-solid fa-right-to-bracket"></i></a></li>
+			    		{% else %}
+			    		<li class="lgin" style="float:right;text-decoration: none;margin-top: 1em;margin-bottom: 1em;"><a href="{% url 'LGout' %}" class="active11"><ul class="active0" style="padding: 0em; margin: 0em;margin-right: 2em; padding:0.6em;color: #2f404f;"><li><p style=" display: inline;padding: 0; margin: 0; padding-right:0.7em; font-size: 1.2em"><b>{{Name}}</b></p><i class="fa-solid fa-user-check" style="display: inline; font-size:1.5em;"></i></li><br><li><p style=" display: inline-block;padding: 0; margin: 0; padding-right: 1em; font-size:0.7em;"><b>{{User}}</b></p></li></ul></a></li>
+			    		{% endif %}
+			    	</ul>
+				</li>
+{% block content %}
+
+{% endblock %}

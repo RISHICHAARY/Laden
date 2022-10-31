@@ -1,0 +1,379 @@
+{% extends 'NavBar.html' %}
+{% block title %}LADEN | Products{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block meta_description1 %}{% endblock %}
+{% block meta_description21 %}{% endblock %}
+{% block meta_description2 %}{% endblock %}
+{% block meta_description3 %}{% endblock %}
+{% block meta_description4 %}active{% endblock %}
+{% block meta_description41 %}active{% endblock %}
+{% block meta_description5 %}{% endblock %}
+{% block meta_description51 %}{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body class="animated-background">
+	<header>
+	    <div class ="Smb">
+	    	{% block content %}
+	    	<link rel="stylesheet" type="text/css" href="{% static 'css/Prd_css.css' %}">
+	    </div>
+	</body>
+	<body class="animated-background">
+	</header>
+    </div>
+    <div style="align-content:right;" class="animated-background">
+    <div style="padding-top: 10em;float:left; width:30%">
+    	<img src="{% static 'images/Ap1.png' %}" style="margin-left:auto;margin-right: auto;max-width: 100%;height: auto;">
+    </div>
+    <div style="padding-top: 10em;float: right;width:65%;">
+    	<form method="POST" action="{% url 'AddProduct' %}" enctype="multipart/form-data" id="form">{% csrf_token %}
+    		<div id="elm">
+    		<p id="pr"><label class="fom"><i class="fa-solid fa-barcode" style="margin:0 0.5em 0 0.5em"></i>SELLER CODE:</label><input type="text" name="Sellcd" required autocomplete="no"><br></p>
+    		<p id="pr"><label class="fom"><i class="fa-solid fa-table-cells-large" style="margin:0 0.5em 0 0.5em"></i>CATEGORY: </label>
+    		<select onchange="Req()" name="cat" id="cat">
+    			<option>SELECT</option>
+    			<option>GROCERY</option>
+    			<option>CLOTHES</option>
+    			<option>ACCESSORIES</option>
+    			<option>LAPTOP</option>
+    			<option>MOBILE</option>
+    		</select></p>
+    	    </div>
+    		<div id="elm1" style="display:none;">
+				<p id="prop0"><label class="fom"><i class="fa-solid fa-signature" style="margin:0 0.5em 0 0.5em"></i>NAME:</label><input id="Tc" type="text" name="Pn" required autocomplete="no"><br></p>
+	    		<p id="prop1"><label class="fom"><i class="fa-solid fa-indian-rupee-sign" style="margin:0 0.5em 0 0.5em"></i>PRICE: </label><input id="Tc" type="text" name="Pp" required autocomplete="no"><br></p>
+	    		<p id="prop2"><label class="fom" style="vertical-align:top;"><i class="fa-solid fa-pen-clip" style="margin:0 0em 0 0.5em"></i>DESCRIPTION: </label><textarea id="Tc" rows = "2" cols = "30" name = "Pd" required autocomplete="no"></textarea><br></p>
+	    		<p id="prop3" style="display:none;"><label class="fom"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>BRAND: </label><input id="Tc" type="text" name="Pb" autocomplete="no"><br></p>
+	    		<p id="prop4" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>BRAND: </label>
+	    			<select name="Pb1">
+	    				<option>SELECT</option>
+	    				<option id="op1"></option>
+	    				<option id="op2"></option>
+	    				<option id="op3"></option>
+	    				<option id="op4"></option>
+	    				<option id="op5"></option>
+	    			</select><br></p>
+	    		<p id="prop5" style="display:none;"><label class="fom" id="frm"></label><input id="Tc" type="text" name="P1" autocomplete="no"><br></p>
+	    		<p id="prop6" style="display:none;"><label class="fom" id="frm1"></label><input id="Tc" type="text" name="P2" autocomplete="no"><br></p>
+	    		<p id="prop7" style="display:none;"><label class="fom" id="frm2"></label><input id="Tc" type="text" name="P3" autocomplete="no"><br></p>
+	    		<p id="prop8" style="display:none;"><label class="fom" id="frm3"></label><input id="Tc" type="text" name="P4" autocomplete="no"><br></p>
+	    		<p id="prop9" style="display:none;"><label class="fom" id="frm4"></label><input id="Tc" type="text" name="P5" autocomplete="no"><br></p>
+	    		<p id="prop10" style="display:none;"><label class="fom" id="frm5"></label><input id="Tc" type="text" name="P6" autocomplete="no"><br></p>
+	    		<p id="prop11" style="display:none;"><label class="fom" id="frm6"></label><input id="Tc" type="text" name="P7" autocomplete="no"><br></p>
+	    		<p id="prop131" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>SIZE: </label>
+	    			<select name="Sz1">
+	    				<option>SELECT</option>
+	    				<option id="op1311"></option>
+	    				<option id="op1312"></option>
+	    				<option id="op1313"></option>
+	    				<option id="op1314"></option>
+	    				<option id="op1315"></option>
+	    			</select><br>
+	    			<label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="demo1"></span></label>
+	    			<input type="number" name="Qs1" max="100" min="1" value="1">
+	    		</p>
+	    		<p id="prop132" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>SIZE: </label>
+	    			<select name="Sz2">
+	    				<option>SELECT</option>
+	    				<option id="op1321"></option>
+	    				<option id="op1322"></option>
+	    				<option id="op1323"></option>
+	    				<option id="op1324"></option>
+	    				<option id="op1325"></option>
+	    			</select><br>
+	    			<label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="demo2"></span></label>
+	    			<input type="number" name="Qs2" max="100" min="1" value="1">
+	    		</p>
+	    		<p id="prop133" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>SIZE: </label>
+	    			<select name="Sz3">
+	    				<option>SELECT</option>
+	    				<option id="op1331"></option>
+	    				<option id="op1332"></option>
+	    				<option id="op1333"></option>
+	    				<option id="op1334"></option>
+	    				<option id="op1335"></option>
+	    			</select><br>
+	    			<label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="demo3"></span></label>
+	    			<input type="number" name="Qs3" max="100" min="1" value="1">
+	    		</p>
+	    		<p id="prop134" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>SIZE: </label>
+	    			<select name="Sz4">
+	    				<option>SELECT</option>
+	    				<option id="op1341"></option>
+	    				<option id="op1342"></option>
+	    				<option id="op1343"></option>
+	    				<option id="op1344"></option>
+	    				<option id="op1345"></option>
+	    			</select><br>
+	    			<label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="demo4"></span></label>
+	    			<input type="number" name="Qs4" max="100" min="1" value="1">
+	    		</p>
+	    		<p id="prop135" style="display:none;"><label class="fom" id="frm0"><i class="fa-solid fa-copyright" style="margin:0 0.5em 0 0.5em"></i>SIZE: </label>
+	    			<select name="Sz5">
+	    				<option>SELECT</option>
+	    				<option id="op1351"></option>
+	    				<option id="op1352"></option>
+	    				<option id="op1353"></option>
+	    				<option id="op1354"></option>
+	    				<option id="op1355"></option>
+	    			</select><br>
+	    			<label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="demo5"></span></label>
+	    			<input type="number" name="Qs5" max="100" min="1" value="1">
+	    		</p>
+	    		<p id="prop12"><label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>IMAGE(400x410):</label><input id="Tc" type="file" accept="image/*" name="Po" required autocomplete="no" style="font-size:0.9em" size="10"><br></p>
+	    		<p id="prop13"><label class="fom"><i class="fa-solid fa-image" style="margin:0 0.5em 0 0.5em"></i>QUANTITY: <span id="Gen"></span></label><input type="number" name="Qs" max="100" min="1" value="1">
+				<!--<input id="Tc1" type="range" name="qunt" value="1" min="0" max="100" class="slider" id="myRange">--><br></p>
+	    		<p id="prop14"><input type="submit" value="Add Product" name="adprd" id="subm" style="border-radius:0.2em;"></p>
+	    		<p id="prop15" style="display:none;"><input type="text" value="{{Name}},{{User}},{{Type}}" name="opu"></p>
+	    	</form>
+		    </div>
+		    <!--<script>
+		    	//document.getElementById("form").reset();
+				//var slider = document.getElementById("myRange");
+				var slider = document.getElementById("Tc1");
+				var output = document.getElementById("Gen");
+				output.innerHTML = slider.value;
+
+				slider.oninput = function() {
+				  output.innerHTML = this.value;
+				}
+			</script>-->
+			<script>
+				document.getElementById("form").reset();
+				var slider = document.getElementById("Qs5");
+				var output = document.getElementById("demo5");
+				output.innerHTML = slider.value;
+
+				slider.oninput = function() {
+				  output.innerHTML = this.value;
+				}
+			</script>
+    		<script type="text/javascript">
+    			function Req(){
+    				document.getElementById("prop0").style.display ="none";
+					document.getElementById("prop1").style.display ="none";
+					document.getElementById("prop2").style.display ="none";
+					document.getElementById("prop3").style.display ="none";
+					document.getElementById("prop4").style.display ="none";
+					document.getElementById("prop5").style.display ="none";
+					document.getElementById("prop6").style.display ="none";
+					document.getElementById("prop7").style.display ="none";
+					document.getElementById("prop8").style.display ="none";
+					document.getElementById("prop9").style.display ="none";
+					document.getElementById("prop10").style.display ="none";
+					document.getElementById("prop11").style.display ="none";
+					document.getElementById("prop12").style.display ="none";
+					document.getElementById("prop13").style.display ="none";
+					document.getElementById("prop131").style.display ="none";
+					document.getElementById("prop132").style.display ="none";
+					document.getElementById("prop133").style.display ="none";
+					document.getElementById("prop134").style.display ="none";
+					document.getElementById("prop135").style.display ="none";
+					document.getElementById("prop14").style.display ="none";
+    				var e = document.getElementById("cat");
+					var value = e.value;
+					var text = e.options[e.selectedIndex].text;
+    				document.getElementById("elm1").style.display ="";
+    				if(text=='MOBILE'){
+    					document.getElementById("frm").innerHTML='<i class="fa-solid fa-memory"style="margin:0 0.5em 0 0.5em"></i>RAM:';
+    					document.getElementById("frm1").innerHTML='<i class="fa-solid fa-database"style="margin:0 0.5em 0 0.5em"></i>STORAGE:';
+    					document.getElementById("frm2").innerHTML='<i class="fa-solid fa-microchip" style="margin:0 0.5em 0 0.5em"></i>PROCESSOR:';
+    					document.getElementById("frm3").innerHTML='<i class="fa-solid fa-camera" style="margin:0 0.5em 0 0.5em"></i>REAR CAMERA SETUP:';
+    					document.getElementById("frm4").innerHTML='<i class="fa-solid fa-camera" style="margin:0 0.5em 0 0.5em"></i>FRONT CAMERA SETUP:';
+    					document.getElementById("frm5").innerHTML='<i class="fa-solid fa-battery-full" style="margin:0 0.5em 0 0.5em"></i>BATTERY:';
+    					document.getElementById("frm6").innerHTML='<i class="fa-solid fa-tv" style="margin:0 0.5em 0 0.5em"></i>DISPLAY:';
+    					document.getElementById("prop4").style.display ="table-row";
+    					document.getElementById("op1").innerHTML="APPLE";
+    					document.getElementById("op2").innerHTML="SAMSUNG";
+    					document.getElementById("op3").innerHTML="IQOO";
+    					document.getElementById("op4").innerHTML="ONEPLUS";
+    					document.getElementById("op5").innerHTML="VIVO";
+    					document.getElementById("prop0").style.display ="table-row";
+    					document.getElementById("prop1").style.display ="table-row";
+    					document.getElementById("prop2").style.display ="table-row";
+    					document.getElementById("prop3").style.display ="none";
+    					document.getElementById("prop5").style.display ="table-row";
+    					document.getElementById("prop6").style.display ="table-row";
+    					document.getElementById("prop7").style.display ="table-row";
+    					document.getElementById("prop8").style.display ="table-row";
+    					document.getElementById("prop9").style.display ="table-row";
+    					document.getElementById("prop10").style.display ="table-row";
+    					document.getElementById("prop11").style.display ="table-row";
+    					document.getElementById("prop12").style.display ="table-row";
+    					document.getElementById("prop13").style.display ="table-row";
+    					document.getElementById("prop14").style.display ="table-row";
+    					document.getElementById("prop131").style.display ="none";
+						document.getElementById("prop132").style.display ="none";
+						document.getElementById("prop133").style.display ="none";
+						document.getElementById("prop134").style.display ="none";
+						document.getElementById("prop135").style.display ="none";
+    				}
+    				else if(text=="GROCERY"){
+    					document.getElementById("frm").innerHTML='<i class="fa-solid fa-weight-hanging" style="margin:0 0.5em 0 0.5em"></i>QUANTITY(/Piece):';
+    					document.getElementById("prop3").style.display ="table-row";
+    					document.getElementById("prop4").style.display ="none";
+    					document.getElementById("prop5").style.display ="table-row";
+    					document.getElementById("prop6").style.display ="none";
+    					document.getElementById("prop7").style.display ="none";
+    					document.getElementById("prop8").style.display ="none";
+    					document.getElementById("prop9").style.display ="none";
+    					document.getElementById("prop10").style.display ="none";
+    					document.getElementById("prop11").style.display ="none";
+    					document.getElementById("prop0").style.display ="table-row";
+    					document.getElementById("prop1").style.display ="table-row";
+    					document.getElementById("prop2").style.display ="table-row";
+    					document.getElementById("prop12").style.display ="table-row";
+    					document.getElementById("prop13").style.display ="table-row";
+    					document.getElementById("prop14").style.display ="table-row";
+    					document.getElementById("prop131").style.display ="none";
+						document.getElementById("prop132").style.display ="none";
+						document.getElementById("prop133").style.display ="none";
+						document.getElementById("prop134").style.display ="none";
+						document.getElementById("prop135").style.display ="none";
+    				}
+    				else if(text=="CLOTHES"){
+    					document.getElementById("prop131").style.display ="table-row";
+    					document.getElementById("op1311").innerHTML="S";
+    					document.getElementById("op1312").innerHTML="M";
+    					document.getElementById("op1313").innerHTML="L";
+    					document.getElementById("op1314").innerHTML="XL";
+    					document.getElementById("op1315").innerHTML="XXL";
+    					document.getElementById("prop132").style.display ="table-row";
+    					document.getElementById("op1321").innerHTML="S";
+    					document.getElementById("op1322").innerHTML="M";
+    					document.getElementById("op1323").innerHTML="L";
+    					document.getElementById("op1324").innerHTML="XL";
+    					document.getElementById("op1325").innerHTML="XXL";
+    					document.getElementById("prop133").style.display ="table-row";
+    					document.getElementById("op1331").innerHTML="S";
+    					document.getElementById("op1332").innerHTML="M";
+    					document.getElementById("op1333").innerHTML="L";
+    					document.getElementById("op1334").innerHTML="XL";
+    					document.getElementById("op1335").innerHTML="XXL";
+    					document.getElementById("prop134").style.display ="table-row";
+    					document.getElementById("op1341").innerHTML="S";
+    					document.getElementById("op1342").innerHTML="M";
+    					document.getElementById("op1343").innerHTML="L";
+    					document.getElementById("op1344").innerHTML="XL";
+    					document.getElementById("op1345").innerHTML="XXL";
+    					document.getElementById("prop135").style.display ="table-row";
+    					document.getElementById("op1351").innerHTML="S";
+    					document.getElementById("op1352").innerHTML="M";
+    					document.getElementById("op1353").innerHTML="L";
+    					document.getElementById("op1354").innerHTML="XL";
+    					document.getElementById("op1355").innerHTML="XXL";
+    					document.getElementById("frm2").innerHTML='<i class="fa-brands fa-invision" style="margin:0 0.5em 0 0.5em"></i>DESIGN:';
+    					document.getElementById("frm1").innerHTML='<i class="fa-solid fa-sheet-plastic" style="margin:0 0.5em 0 0.5em"></i>MATERIAL:';
+    					document.getElementById("prop3").style.display ="table-row";
+    					document.getElementById("prop4").style.display ="none";
+    					document.getElementById("prop5").style.display ="none";
+    					document.getElementById("prop6").style.display ="table-row";
+    					document.getElementById("prop7").style.display ="table-row";
+    					document.getElementById("prop8").style.display ="none";
+    					document.getElementById("prop9").style.display ="none";
+    					document.getElementById("prop10").style.display ="none";
+    					document.getElementById("prop11").style.display ="none";
+    					document.getElementById("prop0").style.display ="table-row";
+    					document.getElementById("prop1").style.display ="table-row";
+    					document.getElementById("prop2").style.display ="table-row";
+    					document.getElementById("prop12").style.display ="table-row";
+    					document.getElementById("prop13").style.display ="none";
+    					document.getElementById("prop14").style.display ="table-row";
+    					document.getElementById("prop131").style.display ="table-row";
+    					document.getElementById("prop132").style.display ="table-row";
+    					document.getElementById("prop133").style.display ="table-row";
+    					document.getElementById("prop134").style.display ="table-row";
+    					document.getElementById("prop135").style.display ="table-row";
+						}
+    				else if(text=="LAPTOP"){
+    					document.getElementById("frm1").innerHTML="<i class='fa-solid fa-memory' style='margin:0 0.5em 0 0.5em'></i>RAM:";
+    					document.getElementById("frm2").innerHTML='<i class="fa-solid fa-database" style="margin:0 0.5em 0 0.5em"></i>HDD STORAGE:';
+    					document.getElementById("frm").innerHTML='<i class="fa-solid fa-microchip" style="margin:0 0.5em 0 0.5em"></i>PROCESSOR:';
+    					document.getElementById("frm3").innerHTML='<i class="fa-solid fa-database" style="margin:0 0.5em 0 0.5em"></i>SSD STORAGE:';
+    					document.getElementById("frm4").innerHTML='<i class="fa-solid fa-microchip" style="margin:0 0.5em 0 0.5em"></i>GRAPHIC PROCESSOR:';
+    					document.getElementById("frm5").innerHTML='<i class="fa-solid fa-battery-full" style="margin:0 0.5em 0 0.5em"></i>BATTERY:';
+    					document.getElementById("frm6").innerHTML='<i class="fa-solid fa-tv" style="margin:0 0.5em 0 0.5em"></i>DISPLAY SIZE:';
+    					document.getElementById("prop4").style.display ="table-row";
+    					document.getElementById("op1").innerHTML="APPLE";
+    					document.getElementById("op2").innerHTML="HP";
+    					document.getElementById("op3").innerHTML="DELL";
+    					document.getElementById("op4").innerHTML="AZSUS";
+    					document.getElementById("op5").innerHTML="ACER";
+    					document.getElementById("prop3").style.display ="none";
+    					document.getElementById("prop5").style.display ="table-row";
+    					document.getElementById("prop6").style.display ="table-row";
+    					document.getElementById("prop7").style.display ="table-row";
+    					document.getElementById("prop8").style.display ="table-row";
+    					document.getElementById("prop9").style.display ="table-row";
+    					document.getElementById("prop10").style.display ="table-row";
+    					document.getElementById("prop11").style.display ="table-row";
+    					document.getElementById("prop0").style.display ="table-row";
+    					document.getElementById("prop1").style.display ="table-row";
+    					document.getElementById("prop2").style.display ="table-row";
+    					document.getElementById("prop12").style.display ="table-row";
+    					document.getElementById("prop13").style.display ="table-row";
+    					document.getElementById("prop14").style.display ="table-row";
+    					document.getElementById("prop131").style.display ="none";
+						document.getElementById("prop132").style.display ="none";
+						document.getElementById("prop133").style.display ="none";
+						document.getElementById("prop134").style.display ="none";
+						document.getElementById("prop135").style.display ="none";
+    					}
+    				else if(text=="ACCESSORIES"){
+    					document.getElementById("prop4").style.display ="table-row";
+    					document.getElementById("op1").innerHTML="APPLE";
+    					document.getElementById("op2").innerHTML="SAMSUNG";
+    					document.getElementById("op3").innerHTML="IQOO";
+    					document.getElementById("op4").innerHTML="ONEPLUS";
+    					document.getElementById("op5").innerHTML="VIVO";
+    					document.getElementById("prop0").style.display ="table-row";
+    					document.getElementById("prop1").style.display ="table-row";
+    					document.getElementById("prop2").style.display ="table-row";
+    					document.getElementById("prop12").style.display ="table-row";
+    					document.getElementById("prop3").style.display ="none";
+    					document.getElementById("prop5").style.display ="none";
+    					document.getElementById("prop6").style.display ="none";
+    					document.getElementById("prop7").style.display ="none";
+    					document.getElementById("prop8").style.display ="none";
+    					document.getElementById("prop9").style.display ="none";
+    					document.getElementById("prop10").style.display ="none";
+    					document.getElementById("prop11").style.display ="none";
+    					document.getElementById("prop13").style.display ="table-row";
+    					document.getElementById("prop14").style.display ="table-row";
+    					document.getElementById("prop131").style.display ="none";
+						document.getElementById("prop132").style.display ="none";
+						document.getElementById("prop133").style.display ="none";
+						document.getElementById("prop134").style.display ="none";
+						document.getElementById("prop135").style.display ="none";
+    				}
+    				else{
+    					document.getElementById("prop0").style.display ="none";
+    					document.getElementById("prop1").style.display ="none";
+    					document.getElementById("prop2").style.display ="none";
+    					document.getElementById("prop3").style.display ="none";
+    					document.getElementById("prop4").style.display ="none";
+    					document.getElementById("prop5").style.display ="none";
+    					document.getElementById("prop6").style.display ="none";
+    					document.getElementById("prop7").style.display ="none";
+    					document.getElementById("prop8").style.display ="none";
+    					document.getElementById("prop9").style.display ="none";
+    					document.getElementById("prop10").style.display ="none";
+    					document.getElementById("prop11").style.display ="none";
+    					document.getElementById("prop12").style.display ="none";
+    					document.getElementById("prop13").style.display ="none";
+    					document.getElementById("prop14").style.display ="none";
+    					document.getElementById("prop131").style.display ="none";
+						document.getElementById("prop132").style.display ="none";
+						document.getElementById("prop133").style.display ="none";
+						document.getElementById("prop134").style.display ="none";
+						document.getElementById("prop135").style.display ="none";
+    				}
+    			}
+    		</script>
+    </div>
+</div>
+</body>
+</html>{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LADEN | Validation</title>
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Signup_css.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+</head>
+<body class="animated-background">
+	<div class="row">
+		<div class="column side">
+			<img src="{% static 'images/Logo.png' %}" style="margin-top: 15em;margin-left: 5em;float: left;">
+			<p style="color:#fae7d5;;padding-top: 3em;padding-left: 4em;font-size: 4em; margin: 0em;">WELCOME!!</p>
+			<p style="color:#fae7d5;;padding-top: 0em;padding-left: 9em;font-size: 3em;margin: 0em;">A Whole New World is Awaiting For You And Your Needs</p>
+		</div>
+		<div class="column middle">
+			<h3 style="font-size:2em; margin-left: 5em; margin-top: 5em; margin-bottom: 0;color: #fae7d5;">Step-2</h3>
+			<h3 style="font-size:2em; margin-left: 5em; margin-top: 0.5em; margin-bottom: 0;color: #fae7d5;">Enter OTP & CAPTCHA:</h3>
+			<form id="Pd" action="{% url 'Validation' %}" method="POST">{% csrf_token %}
+				<input type="text" name="otp" placeholder="OTP" style="border-color:#fae7d5;" required autocomplete="no">
+				<p style="font-size:1.5em; color: #fae7d5;">Captcha: <s>{{cp}}</s></p>
+				<input type="text" name="cap" placeholder="Captcha" style="border-color:#fae7d5;" required autocomplete="no">
+				<input type="submit" name="Validation" value="Confirm" style="border:none;">
+			</form>
+			<h4 style="font-size:1.5em; color: red;margin: 0; margin-left: 8em; margin-top:0.1em;">{{Res}}</h4>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LADEN | {% for i in Product %}{{i.Brand}} {{i.Name}}{% endfor %}</title>
+	<script src="https://kit.fontawesome.com/4d3ebe1415.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lobster&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/View.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/beg_css.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+</head>
+<body>
+	<header>
+	    <div class ="Smb">
+	    	<ul class="Nul">
+	    		<li class="lgin">
+			    	<ul class="Nul">
+			    		<li><div class="Logo" style="padding:0;margin:0;padding-left:0.5em;"><img src="{% static 'images/Logo.png' %}" class="Lg"></div></li>
+						{% if Name == "" %}
+			    		<li style="float:right;" class="lgin"><a class="active1" href="{% url 'Login' %}"><p style=" display: inline-block;padding: 0; margin: 0; padding-right: 0.5em;"><b>LOGIN</b></p><i class="fa-solid fa-right-to-bracket"></i></a></li>
+			    		{% else %}
+			    		<li class="lgin" style="float:right;text-decoration: none;margin-top: 1em;margin-bottom: 1em;"><a href="{% url 'LGout' %}" class="active11"><ul class="active0" style="padding: 0em; margin: 0em;margin-right: 2em; padding:0.6em;color: #2f404f;"><li><p style=" display: inline;padding: 0; margin: 0; padding-right:0.7em; font-size: 1.2em"><b>{{Name}}</b></p><i class="fa-solid fa-user-check" style="display: inline; font-size:1.5em;"></i></li><br><li><p style=" display: inline-block;padding: 0; margin: 0; padding-right: 1em; font-size:0.7em;"><b>{{User}}</b></p></li></ul></a></li>
+			    		{% endif %}
+			    	</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<div class="row">
+		{% for i in Product %}
+		{% if i.Cata == "GROCERY" %}
+		<div class="col1">
+			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+		<div class="col2">
+			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;">Quantity/Pack: {{i.Quant}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:0.5em;">Sold By: {{i.Seller}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">About: {{i.Details}}.</p>
+			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+				<label style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;">Qunatity: </label> <input type="number" name="Qnty" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;" min="1" max="50" value="1"></input>
+				{% if Name == "" %}
+				<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;color:red;">Login to Buy</p>
+				{% else %}
+				<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;margin-left:0.5em;">ADD TO CART<i class="fa-solid fa-cart-shopping" style="margin-left:0.7em"></i></button>
+				{% endif %}
+			</form>
+		</div>
+		{% elif i.Cata == "CLOTHES" %}
+		<div class="col1">
+			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+		<div class="col2">
+			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;">Quantity/Pack: {{i.Quant}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:0.5em;">Sold By: {{i.Seller}}</p>
+			<label class="fom" id="frm0" style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0.5em 0;">SIZE: </label>
+			<select name="Sz3" style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0.5em 0">
+				<option id="op1331">S</option>
+				<option id="op1332">M</option>
+				<option id="op1333">L</option>
+				<option id="op1334">XL</option>
+				<option id="op1335">XXL</option>
+			</select>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:0.1em;">Material: {{i.Mat}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:0.1em;">Design: {{i.Des}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">About: {{i.Details}}.</p>
+			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+				<label style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;">Qunatity: </label> <input type="number" name="Qnty" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;" min="1" max="50" value="1"></input>
+				{% if Name == "" %}
+				<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;color:red;">Login to Buy</p>
+				{% else %}
+				<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;margin-left:0.5em;">ADD TO CART<i class="fa-solid fa-cart-shopping" style="margin-left:0.7em"></i></button>
+				{% endif %}
+			</form>
+		</div>
+		{% elif i.Cata == "ACCESSORIES" %}
+		<div class="col1">
+			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+		<div class="col2">
+			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:0.5em;">Sold By: {{i.Seller}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">About: {{i.Details}}.</p>
+			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+				<label style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;">Qunatity: </label> <input type="number" name="Qnty" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;" min="1" max="50" value="1"></input>
+				{% if Name == "" %}
+				<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;color:red;">Login to Buy</p>
+				{% else %}
+				<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;margin-left:0.5em;">ADD TO CART<i class="fa-solid fa-cart-shopping" style="margin-left:0.7em"></i></button>
+				{% endif %}
+			</form>
+		</div>
+		{% elif i.Cata == "MOBILE" %}
+		<div class="col1">
+			<img src="..{{i.Image}}" style="display:inline;float:left;"></img></div>
+		<div class="col2">
+			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:0.5em;">Sold By: {{i.Seller}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">About: {{i.Details}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Ram: {{i.Ram}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Processor: {{i.Proc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Rom: {{i.Rom}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Rear Camera Setup: {{i.Rc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Front Camera Setup: {{i.Fc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Battery: {{i.Bat}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Diaplay: {{i.Dp}}.</p>
+			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+				<label style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;">Qunatity: </label> <input type="number" name="Qnty" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;" min="1" max="50" value="1"></input>
+				{% if Name == "" %}
+				<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;color:red;">Login to Buy</p>
+				{% else %}
+				<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;margin-left:0.5em;">ADD TO CART<i class="fa-solid fa-cart-shopping" style="margin-left:0.7em"></i></button>
+				{% endif %}
+			</form>
+		</div>
+		{% elif i.Cata == "LAPTOP" %}
+		<div class="col1">
+			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+		<div class="col2">
+			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:0.5em;">Sold By: {{i.Seller}}</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">About: {{i.Details}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Ram: {{i.Ram}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Processor: {{i.Proc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">HDD: {{i.Rom}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">SSD: {{i.Rc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Graphics Processor: {{i.Fc}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Battery: {{i.Bat}}.</p>
+			<p style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;">Diaplay: {{i.Dp}}.</p>
+			<form method="POST" action="{% url 'Cart'%}">{% csrf_token %}
+				<label style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;">Qunatity: </label> <input type="number" name="Qnty" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;" min="1" max="50" value="1"></input>
+				{% if Name == "" %}
+				<p style="font-family:'Montserrat',sans-serif; font-size:2em;margin:0;margin-top:1em;color:red;">Login to Buy</p>
+				{% else %}
+				<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1.5em;margin:0;margin-top:1em;margin-left:0.5em;">ADD TO CART<i class="fa-solid fa-cart-shopping" style="margin-left:0.7em"></i></button>
+				{% endif %}
+			</form>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	<h1>Related Products</h1>
+	<div class="rowprod">
+			{% for i in Prd %}
+			<div class="col">
+			{% if i.Cata == "MOBILE" %}
+			<img src="..{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;margin-right: auto;">
+			{% else %}
+			<img src="../Media/{{i.Image}}" width="40%" height="60%" style="display:block;margin-left: auto;margin-right: auto;">
+			{% endif %}
+			<P style="margin:0;margin-top:0.5em;font-family:'Montserrat', sans-serif;font-size:1em;">{{i.Brand}}  {{i.Name}}</P>
+			<p style="margin-bottom:1em;margin-top:0.5em;font-family:'Montserrat', sans-serif;font-size:1em;">Rs: {{i.Price}}/-</p>
+			<form method="POST" action="{% url 'View'%}">{% csrf_token %}
+			<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1em;margin:0;margin-top:1em;margin-left:0.5em;">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em"></i></button>
+			</form>
+		    </div>
+			{% endfor %}
+	</div>
+</body>
+</html>
