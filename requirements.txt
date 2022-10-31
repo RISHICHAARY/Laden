@@ -8,3 +8,4 @@ gunicorn==20.1.0
 python-decouple==3.6
 sqlparse==0.4.2
 pytz==2019.3
+soupsieve==2.3.1
