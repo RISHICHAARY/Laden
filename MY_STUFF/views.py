@@ -819,8 +819,6 @@ def Orders(request):
 						addres=addres+str(ad[jk])+","
 					else:
 						addres=addres+str(ad[jk])
-				print(impp)
-				print(impp[len(impp)-1])
 				if(impp[1]=="GROCERY"):
 					curs.execute("select * from grocery where sc='{}' and Name='{}'".format(impp[0],impp[2]))
 					det=curs.fetchall()
@@ -864,8 +862,6 @@ def Orders(request):
 						addres=addres+str(ad[jk])+","
 					else:
 						addres=addres+str(ad[jk])
-				print(impp)
-				print(impp[len(impp)-1])
 				if(impp[1]=="GROCERY"):
 					curs.execute("select * from grocery where sc='{}' and Name='{}'".format(impp[0],impp[2]))
 					det=curs.fetchall()
@@ -879,8 +875,6 @@ def Orders(request):
 				elif(impp[1]=="MOBILE"):
 					curs.execute("select * from mobile where sc='{}' and Name='{}'".format(impp[0],impp[2]))
 					det=curs.fetchall()
-					print(impp[2],impp[0])
-					print(det)
 					res={"Name":det[0][2],"Seller":det[0][0],"Cata":det[0][1],"Brand":det[0][5],"Price":det[0][3],"Image":det[0][13],"Quant":impp[3],"TP":str(int(impp[3])*int(det[0][3])),"FrmU":impp[4],"FrmE":impp[5],"FrmA":addres,"FrmM":impp[len(impp)-1]}
 					final.append(res)
 				elif(impp[1]=="LAPTOP"):
