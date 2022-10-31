@@ -1344,6 +1344,76 @@ def Signin(request):
 	else:
 		return render(request, 'Signup.html',{"Mv":0})
 def Login(request):
+	test=curs.execute("select oncart from ceo")
+	teres=test.fetchall()
+	Name=str(request.POST.get("Home"))
+	if request.method=="POST":
+		Lgcred=Name.split(',')
+		curs.execute("select * from Mobile where onoffer =='on'")
+		dit={}
+		final=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][13]
+			dit={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			final.append(dit)
+		curs.execute("select * from Laptop where onoffer =='on'")
+		dit1={}
+		final1=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][14]
+			dit1={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			final1.append(dit1)
+		curs.execute("select * from Accessories where onoffer =='on'")
+		dit2={}
+		final2=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][7]
+			dit2={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			final2.append(dit2)
+		curs.execute("select * from Clothes where onoffer =='on'")
+		dit3={}
+		final3=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][10]
+			dit3={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			final3.append(dit3)
+		curs.execute("select * from Grocery where onoffer =='on'")
+		dit4={}
+		final4=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][8]
+			dit4={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			final4.append(dit4)
 	global Usr
 	global Uname
 	global Umail
