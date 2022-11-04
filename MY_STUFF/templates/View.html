@@ -34,7 +34,7 @@
 		{% for i in Product %}
 		{% if i.Cata == "GROCERY" %}
 		<div class="col1">
-			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+			<img src="../Media/{{i.Image}}" width="100%" style="display:inline;float:left;"></img></div>
 		<div class="col2">
 			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
 			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
@@ -52,7 +52,7 @@
 		</div>
 		{% elif i.Cata == "CLOTHES" %}
 		<div class="col1">
-			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+			<img src="../Media/{{i.Image}}" width="100%" style="display:inline;float:left;"></img></div>
 		<div class="col2">
 			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
 			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
@@ -80,7 +80,7 @@
 		</div>
 		{% elif i.Cata == "ACCESSORIES" %}
 		<div class="col1">
-			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+			<img src="../Media/{{i.Image}}" width="100%" style="display:inline;float:left;"></img></div>
 		<div class="col2">
 			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
 			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
@@ -97,7 +97,7 @@
 		</div>
 		{% elif i.Cata == "MOBILE" %}
 		<div class="col1">
-			<img src="..{{i.Image}}" style="display:inline;float:left;"></img></div>
+			<img src="..{{i.Image}}" width="100%" style="display:inline;float:left;"></img></div>
 		<div class="col2">
 			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
 			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
@@ -121,7 +121,7 @@
 		</div>
 		{% elif i.Cata == "LAPTOP" %}
 		<div class="col1">
-			<img src="../Media/{{i.Image}}" style="display:inline;float:left;"></img></div>
+			<img src="../Media/{{i.Image}}" width="100%" style="display:inline;float:left;"></img></div>
 		<div class="col2">
 			<p style="font-family:'Montserrat',sans-serif; font-size:3em;margin:0;">{{i.Brand}}  {{i.Name}}</p>
 			<p style="font-family:'Montserrat',sans-serif; font-size:2.5em;margin:0;margin-top:1em;">Rs: {{i.Price}}/-</p>
@@ -158,7 +158,7 @@
 			<P style="margin:0;margin-top:0.5em;font-family:'Montserrat', sans-serif;font-size:1em;">{{i.Brand}}  {{i.Name}}</P>
 			<p style="margin-bottom:1em;margin-top:0.5em;font-family:'Montserrat', sans-serif;font-size:1em;">Rs: {{i.Price}}/-</p>
 			<form method="POST" action="{% url 'View'%}">{% csrf_token %}
-			<button type="submit" name="Cart" value="{{i.Seller}},{{i.Cata}},{{i.Name}},{{Name}},{{User}},{{Type}}" style="font-family:'Montserrat',sans-serif; font-size:1em;margin:0;margin-top:1em;margin-left:0.5em;">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em"></i></button>
+			<button type="submit" name="Prdname" value="{{i.Seller}},{{i.Cata}},{{i.Name}}" style="font-family:'Montserrat',sans-serif; font-size:1em;margin:0;margin-top:1em;margin-left:0.5em;">VIEW<i class="fa-solid fa-eye" style="margin-left:0.7em"></i></button>
 			</form>
 		    </div>
 			{% endfor %}

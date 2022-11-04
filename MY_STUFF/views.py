@@ -235,43 +235,12 @@ def Home(request):
 			final4.append(dit4)
 		return render(request, 'Home.html',{"Name":"1",'Details':final,'Details1':final1,'Details2':final2,'Details3':final3,'Details4':final4})
 def Mobile(request):
-	global final
-	global final1
-	global final2
-	global final3
-	global final4
-	final=[]
-	final1=[]
-	final2=[]
-	final3=[]
-	final4=[]
+	finalmob=[]
 	Name=str(request.POST.get("Home"))
 	if request.method=="POST":
 		Lgcred=Name.split(',')
-		B={'Name':[],'Brand':[],"Img":[]}
-		for i in Accs:
-			B['Name'].append(i[1])
-			B['Brand'].append(i[4])
-			B['Img'].append(i[-3])
-		A=open("Lsav.txt","r")
-		Ac=A.read()
-		Acl=Ac.split(" ")
-		if(Acl==['']):
-			Uname=''
-			Umail=''
-			Utype=''
-		else:
-			Uname=Acl[0]
-			Umail=Acl[1]
-			Utype=Acl[2]
 		curs.execute("select * from Mobile")
 		ditmob={}
-		nm=[]
-		em=[]
-		sb=[]
-		bd=[]
-		dt=[]
-		finalmob=[]
 		ad=curs.fetchall()
 		for i in range(0,len(ad)):
 			sc1=ad[i][0]
@@ -282,181 +251,109 @@ def Mobile(request):
 			bd1=ad[i][13]
 			ditmob={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
 			finalmob.append(ditmob)
-		return render(request, 'Home.html',{ "Name":Lgcred[0],"User":Lgcred[1],"languages":["Ate","Bat","Cat"],"Type":Lgcred[2],"prd":B,'Page':"Mobile",'Details':finalmob,})
+		return render(request, 'Home.html',{ "Name":Lgcred[0],"User":Lgcred[1],"Type":Lgcred[2],'Page':"Mobile",'Details':finalmob,})
 	else:
 		return render(request, 'Home.html',{"Name":"1",'Page':"Mobile"})
 def Laptop(request):
-	global final
-	global final1
-	global final2
-	global final3
-	global final4
-	Acc=curs.execute("select * from mobile")
-	Accs=Acc.fetchall()
-	B={'Name':[],'Brand':[],"Img":[]}
-	for i in Accs:
-		B['Name'].append(i[1])
-		B['Brand'].append(i[4])
-		B['Img'].append(i[-3])
-	A=open("Lsav.txt","r")
-	Ac=A.read()
-	Acl=Ac.split(" ")
-	if(Acl==['']):
-		Uname=''
-		Umail=''
-		Utype=''
+	if request.method=="POST":
+		Name=str(request.POST.get("Home"))
+		Lgcred=Name.split(',')
+		global final
+		global final1
+		global final2
+		global final3
+		global final4
+		curs.execute("select * from Laptop")
+		ditlap={}
+		finallap=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][14]
+			ditlap={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			finallap.append(ditlap)
+		return render(request,'Home.html',{"Name":Lgcred[0],"User":Lgcred[1],"Type":Lgcred[2],'Page':"Laptop",'Details':finallap,})
 	else:
-		Uname=Acl[0]
-		Umail=Acl[1]
-		Utype=Acl[2]
-	curs.execute("select * from Laptop")
-	ditlap={}
-	nm=[]
-	em=[]
-	sb=[]
-	bd=[]
-	dt=[]
-	finallap=[]
-	ad=curs.fetchall()
-	for i in range(0,len(ad)):
-		sc1=ad[i][0]
-		ct1=ad[i][1]
-		nm1=ad[i][2]
-		em1=ad[i][3]
-		sb1=ad[i][5]
-		bd1=ad[i][14]
-		ditlap={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-		finallap.append(ditlap)
-	return render(request,'Home.html',{"Name":Uname,"User":Umail,"languages":["Ate","Bat","Cat"],"Type":Utype,"prd":B,'Page':"Laptop",'Details':finallap,})
+		return render(request,'Home.html',{})
 def Accessories(request):
-	global final
-	global final1
-	global final2
-	global final3
-	global final4
-	Acc=curs.execute("select * from mobile")
-	Accs=Acc.fetchall()
-	B={'Name':[],'Brand':[],"Img":[]}
-	for i in Accs:
-		B['Name'].append(i[1])
-		B['Brand'].append(i[4])
-		B['Img'].append(i[-3])
-	A=open("Lsav.txt","r")
-	Ac=A.read()
-	Acl=Ac.split(" ")
-	if(Acl==['']):
-		Uname=''
-		Umail=''
-		Utype=''
+	if request.method=="POST":
+		Name=str(request.POST.get("Home"))
+		Lgcred=Name.split(',')
+		global final
+		global final1
+		global final2
+		global final3
+		global final4
+		curs.execute("select * from Accessories")
+		ditacc={}
+		finalacc=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][7]
+			ditacc={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			finalacc.append(ditacc)
+		return render(request,'Home.html',{"Name":Lgcred[0],"User":Lgcred[1],"Type":Lgcred[2],'Page':"Accessories",'Details':finalacc,})
 	else:
-		Uname=Acl[0]
-		Umail=Acl[1]
-		Utype=Acl[2]
-	curs.execute("select * from Accessories")
-	ditacc={}
-	nm=[]
-	em=[]
-	sb=[]
-	bd=[]
-	dt=[]
-	finalacc=[]
-	ad=curs.fetchall()
-	for i in range(0,len(ad)):
-		sc1=ad[i][0]
-		ct1=ad[i][1]
-		nm1=ad[i][2]
-		em1=ad[i][3]
-		sb1=ad[i][5]
-		bd1=ad[i][7]
-		ditacc={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-		finalacc.append(ditacc)
-	return render(request,'Home.html',{"Name":Uname,"User":Umail,"languages":["Ate","Bat","Cat"],"Type":Utype,"prd":B,'Page':"Accessories",'Details':finalacc,})
+		return render(request,'Home.html',{})
 def Clothes(request):
-	global final
-	global final1
-	global final2
-	global final3
-	global final4
-	Acc=curs.execute("select * from mobile")
-	Accs=Acc.fetchall()
-	B={'Name':[],'Brand':[],"Img":[]}
-	for i in Accs:
-		B['Name'].append(i[1])
-		B['Brand'].append(i[4])
-		B['Img'].append(i[-3])
-	A=open("Lsav.txt","r")
-	Ac=A.read()
-	Acl=Ac.split(" ")
-	if(Acl==['']):
-		Uname=''
-		Umail=''
-		Utype=''
+	if request.method=="POST":
+		Name=str(request.POST.get("Home"))
+		Lgcred=Name.split(',')
+		global final
+		global final1
+		global final2
+		global final3
+		global final4
+		curs.execute("select * from Clothes")
+		ditclo={}
+		finalclo=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][10]
+			ditclo={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			finalclo.append(ditclo)
+		return render(request,'Home.html',{"Name":Lgcred[0],"User":Lgcred[1],"Type":Lgcred[2],'Page':"Clothes",'Details':finalclo,})
 	else:
-		Uname=Acl[0]
-		Umail=Acl[1]
-		Utype=Acl[2]
-	curs.execute("select * from Clothes")
-	ditclo={}
-	nm=[]
-	em=[]
-	sb=[]
-	bd=[]
-	dt=[]
-	finalclo=[]
-	ad=curs.fetchall()
-	for i in range(0,len(ad)):
-		sc1=ad[i][0]
-		ct1=ad[i][1]
-		nm1=ad[i][2]
-		em1=ad[i][3]
-		sb1=ad[i][5]
-		bd1=ad[i][10]
-		ditclo={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-		finalclo.append(ditclo)
-	return render(request,'Home.html',{"Name":Uname,"User":Umail,"languages":["Ate","Bat","Cat"],"Type":Utype,"prd":B,'Page':"Clothes",'Details':finalclo,})
+		return render(request,'Home.html',{})
 def Grocery(request):
-	global final
-	global final1
-	global final2
-	global final3
-	global final4
-	Acc=curs.execute("select * from mobile")
-	Accs=Acc.fetchall()
-	B={'Name':[],'Brand':[],"Img":[]}
-	for i in Accs:
-		B['Name'].append(i[1])
-		B['Brand'].append(i[4])
-		B['Img'].append(i[-3])
-	A=open("Lsav.txt","r")
-	Ac=A.read()
-	Acl=Ac.split(" ")
-	if(Acl==['']):
-		Uname=''
-		Umail=''
-		Utype=''
+	if request.method=="POST":
+		Name=str(request.POST.get("Home"))
+		Lgcred=Name.split(',')
+		global final
+		global final1
+		global final2
+		global final3
+		global final4
+		curs.execute("select * from Grocery")
+		ditgro={}
+		finalgro=[]
+		ad=curs.fetchall()
+		for i in range(0,len(ad)):
+			sc1=ad[i][0]
+			ct1=ad[i][1]
+			nm1=ad[i][2]
+			em1=ad[i][3]
+			sb1=ad[i][5]
+			bd1=ad[i][8]
+			ditgro={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+			finalgro.append(ditgro)
+		return render(request,'Home.html',{"Name":Lgcred[0],"User":Lgcred[1],"Type":Lgcred[2],'Page':"Grocery",'Details':finalgro,})
 	else:
-		Uname=Acl[0]
-		Umail=Acl[1]
-		Utype=Acl[2]
-	curs.execute("select * from Grocery")
-	ditgro={}
-	nm=[]
-	em=[]
-	sb=[]
-	bd=[]
-	dt=[]
-	finalgro=[]
-	ad=curs.fetchall()
-	for i in range(0,len(ad)):
-		sc1=ad[i][0]
-		ct1=ad[i][1]
-		nm1=ad[i][2]
-		em1=ad[i][3]
-		sb1=ad[i][5]
-		bd1=ad[i][8]
-		ditgro={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-		finalgro.append(ditgro)
-	return render(request,'Home.html',{"Name":Uname,"User":Umail,"languages":["Ate","Bat","Cat"],"Type":Utype,"prd":B,'Page':"Grocery",'Details':finalgro,})
+		return render(request,'Home.html',{})
 def Oa(request):
 	if request.method=="POST":
 		Orderrs=[]
@@ -654,11 +551,6 @@ def View(request,product=""):
 			curs.execute("select * from Clothes")
 			ad=curs.fetchall()
 			ditclo={}
-			nm=[]
-			em=[]
-			sb=[]
-			bd=[]
-			dt=[]
 			for i in range(0,len(ad)):
 				sc1=ad[i][0]
 				ct1=ad[i][1]
@@ -687,11 +579,6 @@ def View(request,product=""):
 		elif(products[1]=="ACCESSORIES"):
 			curs.execute("select * from Accessories")
 			ditacc={}
-			nm=[]
-			em=[]
-			sb=[]
-			bd=[]
-			dt=[]
 			finalgro=[]
 			ad=curs.fetchall()
 			for i in range(0,len(ad)):
@@ -719,11 +606,6 @@ def View(request,product=""):
 		elif(products[1]=="MOBILE"):
 			curs.execute("select * from Mobile")
 			ditmob={}
-			nm=[]
-			em=[]
-			sb=[]
-			bd=[]
-			dt=[]
 			finalgro=[]
 			ad=curs.fetchall()
 			for i in range(0,len(ad)):
@@ -758,11 +640,6 @@ def View(request,product=""):
 		elif(products[1]=="LAPTOP"):
 			curs.execute("select * from Laptop")
 			ditlap={}
-			nm=[]
-			em=[]
-			sb=[]
-			bd=[]
-			dt=[]
 			finalgro=[]
 			ad=curs.fetchall()
 			for i in range(0,len(ad)):
@@ -862,6 +739,7 @@ def Orders(request):
 						addres=addres+str(ad[jk])+","
 					else:
 						addres=addres+str(ad[jk])
+				print(addres)
 				if(impp[1]=="GROCERY"):
 					curs.execute("select * from grocery where sc='{}' and Name='{}'".format(impp[0],impp[2]))
 					det=curs.fetchall()
@@ -1253,7 +1131,7 @@ def Validation(request):
 						bod="WELCOME PARTNER!! "+Fn[0]+Ln[0]+str(len(Accs))+" is your seller code. You Have Entered The Whole New World Of Exitements. Here you can explore and Sell your things you expect at price you don't ecpect. Happy Selling & Shopping :)."
 						msg=f"subject:{sub}\n\n{bod}"
 						smtp.sendmail('manageladen01@gmail.com',Mail,msg)
-					return render(request, 'Home.html',{ "Name":"","User":"",})
+					return render(request, 'Home.html',{ "Name":str(Fn+Ln),"User":str(Mail),"Type":"seller",})
 				else:
 					curs.execute("insert into Seller values('{}','{}','{}','{}','{}','{}','{}','{}','{}','','','','')".format(Fn[0]+Ln[0]+str(len(Accs)),Fn+Ln,Age,Dob,Gen,Cunt,Mob,Mail,Password,Adrs))
 					con.commit()
@@ -1264,13 +1142,13 @@ def Validation(request):
 						bod="WELCOME PARTNER!! "+Fn[0]+Ln[0]+str(len(Accs))+" is your seller code. You Have Entered The Whole New World Of Exitements. Here you can explore and Sell your things you expect at price you don't ecpect. Happy Selling & Shopping :)."
 						msg=f"subject:{sub}\n\n{bod}"
 						smtp.sendmail('manageladen01@gmail.com',Mail,msg)
-					return render(request, 'Home.html',{ "Name":"","User":"",})
+					return render(request, 'Home.html',{ "Name":str(Fn+Ln),"User":str(Mail),"Type":"seller"})
 			else:
 				messages.error(request, 'Inavlid Credentials.')
 				return render(request, 'Validation.html',{"cp":capt,"otp":otp6,"Res":"Inavlid Credentials"})
 		else:
 			if(Etp==str(otp) and Cap==str(capt)):
-				curs.execute("insert into User values('{}','{}','{}','{}','{}','{}','{}','{}','','','')".format(Fn+Ln,Age,Dob,Gen,Cunt,Mob,Mail,Password,Adrs))
+				curs.execute("insert into User values('{}','{}','{}','{}','{}','{}','{}','{}','{}','','')".format(Fn+Ln,Age,Dob,Gen,Cunt,Mob,Mail,Password,Adrs))
 				con.commit()
 				with smtplib.SMTP('smtp.gmail.com',587) as smtp:
 					smtp.starttls()
@@ -1279,7 +1157,7 @@ def Validation(request):
 					bod="WELCOME!! You Have Entered The Whole New World Of Exitements. Here you can explore things you expect at price you don't ecpect. Happy Shopping :)."
 					msg=f"subject:{sub}\n\n{bod}"
 					smtp.sendmail('manageladen01@gmail.com',Mail,msg)
-				return render(request, 'Home.html',{ "Name":"","User":"",})
+				return render(request, 'Home.html',{ "Name":str(Fn+Ln),"User":str(Mail),"Type":"user",})
 			else:
 				messages.error(request, 'Inavlid Credentials.')
 				return render(request, 'Validation.html',{"cp":capt,"otp":otp,"Res":"Inavlid Credentials"})
@@ -1566,76 +1444,71 @@ def FogPas(request):
 									if(k==len(Accs2)-1):
 										return render(request, 'Login.html',{"User":"NotAuthenticated",})
 def LGout(request):
-	test=curs.execute("select oncart from ceo")
-	teres=test.fetchall()
-	Name=str(request.POST.get("Home"))
-	if request.method=="POST":
-		Lgcred=Name.split(',')
-		curs.execute("select * from Mobile where onoffer =='on'")
-		dit={}
-		final=[]
-		ad=curs.fetchall()
-		for i in range(0,len(ad)):
-			sc1=ad[i][0]
-			ct1=ad[i][1]
-			nm1=ad[i][2]
-			em1=ad[i][3]
-			sb1=ad[i][5]
-			bd1=ad[i][13]
-			dit={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-			final.append(dit)
-		curs.execute("select * from Laptop where onoffer =='on'")
-		dit1={}
-		final1=[]
-		ad=curs.fetchall()
-		for i in range(0,len(ad)):
-			sc1=ad[i][0]
-			ct1=ad[i][1]
-			nm1=ad[i][2]
-			em1=ad[i][3]
-			sb1=ad[i][5]
-			bd1=ad[i][14]
-			dit1={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-			final1.append(dit1)
-		curs.execute("select * from Accessories where onoffer =='on'")
-		dit2={}
-		final2=[]
-		ad=curs.fetchall()
-		for i in range(0,len(ad)):
-			sc1=ad[i][0]
-			ct1=ad[i][1]
-			nm1=ad[i][2]
-			em1=ad[i][3]
-			sb1=ad[i][5]
-			bd1=ad[i][7]
-			dit2={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-			final2.append(dit2)
-		curs.execute("select * from Clothes where onoffer =='on'")
-		dit3={}
-		final3=[]
-		ad=curs.fetchall()
-		for i in range(0,len(ad)):
-			sc1=ad[i][0]
-			ct1=ad[i][1]
-			nm1=ad[i][2]
-			em1=ad[i][3]
-			sb1=ad[i][5]
-			bd1=ad[i][10]
-			dit3={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-			final3.append(dit3)
-		curs.execute("select * from Grocery where onoffer =='on'")
-		dit4={}
-		final4=[]
-		ad=curs.fetchall()
-		for i in range(0,len(ad)):
-			sc1=ad[i][0]
-			ct1=ad[i][1]
-			nm1=ad[i][2]
-			em1=ad[i][3]
-			sb1=ad[i][5]
-			bd1=ad[i][8]
-			dit4={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
-			final4.append(dit4)
+	curs.execute("select * from Mobile where onoffer =='on'")
+	dit={}
+	final=[]
+	ad=curs.fetchall()
+	for i in range(0,len(ad)):
+		sc1=ad[i][0]
+		ct1=ad[i][1]
+		nm1=ad[i][2]
+		em1=ad[i][3]
+		sb1=ad[i][5]
+		bd1=ad[i][13]
+		dit={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+		final.append(dit)
+	curs.execute("select * from Laptop where onoffer =='on'")
+	dit1={}
+	final1=[]
+	ad=curs.fetchall()
+	for i in range(0,len(ad)):
+		sc1=ad[i][0]
+		ct1=ad[i][1]
+		nm1=ad[i][2]
+		em1=ad[i][3]
+		sb1=ad[i][5]
+		bd1=ad[i][14]
+		dit1={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+		final1.append(dit1)
+	curs.execute("select * from Accessories where onoffer =='on'")
+	dit2={}
+	final2=[]
+	ad=curs.fetchall()
+	for i in range(0,len(ad)):
+		sc1=ad[i][0]
+		ct1=ad[i][1]
+		nm1=ad[i][2]
+		em1=ad[i][3]
+		sb1=ad[i][5]
+		bd1=ad[i][7]
+		dit2={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+		final2.append(dit2)
+	curs.execute("select * from Clothes where onoffer =='on'")
+	dit3={}
+	final3=[]
+	ad=curs.fetchall()
+	for i in range(0,len(ad)):
+		sc1=ad[i][0]
+		ct1=ad[i][1]
+		nm1=ad[i][2]
+		em1=ad[i][3]
+		sb1=ad[i][5]
+		bd1=ad[i][10]
+		dit3={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+		final3.append(dit3)
+	curs.execute("select * from Grocery where onoffer =='on'")
+	dit4={}
+	final4=[]
+	ad=curs.fetchall()
+	for i in range(0,len(ad)):
+		sc1=ad[i][0]
+		ct1=ad[i][1]
+		nm1=ad[i][2]
+		em1=ad[i][3]
+		sb1=ad[i][5]
+		bd1=ad[i][8]
+		dit4={'Seller':sc1,'Cata':ct1,'Name':nm1,'Price':em1,'Brand':sb1,'Image':bd1}
+		final4.append(dit4)
 	return render(request, 'Home.html',{"Name":"1","User":"1",'Details':final,'Details1':final1,'Details2':final2,'Details3':final3,'Details4':final4})
 def Remove(request):
 	curs.execute("select * from user")
@@ -1895,6 +1768,7 @@ def CheckOut(request):
 		elif(Split_Data[2]=="user"):
 			curs.execute("select address from user where Name='{}' and Userid='{}'".format(Split_Data[0],Split_Data[1]))
 			adres=curs.fetchall()
+			print(adres)
 			curs.execute("select mono from user where Name='{}' and Userid='{}'".format(Split_Data[0],Split_Data[1]))
 			mobile=curs.fetchall()
 			curs.execute("select oncart from user where Name='{}' and Userid='{}'".format(Split_Data[0],Split_Data[1]))
@@ -2025,16 +1899,6 @@ def Deliver(request):
 				bod='We have handed over your order to our delivery partner. Our delivery partner will be contacting to from now for further updates.'
 				msg=f"subject:{sub}\n\n{bod}"
 				smtp.sendmail('manageladen01@gmail.com',Split_Data[4],msg)
-			curs.execute("select orders from seller where Name='{}' and Userid='{}'".format(Split_Data[0],Split_Data[1]))
-			ord=curs.fetchall()
-			orddet=ord[0][0].split("|")
-			for i in range(0,len(orddet)-1):
-				if((Split_Data[3] in orddet[i]) and (Split_Data[4] in orddet[i])and (Split_Data[5] in orddet[i])and (Split_Data[6] in orddet[i])and (Split_Data[7] in orddet[i])):
-					orddet.remove(orddet[i])
-					B="|".join(orddet)
-					curs.execute("update seller set orders='{}' where Name='{}' and Userid='{}'".format(str(B),Split_Data[0],Split_Data[1]))
-					con.commit()
-					break
 			curs.execute("select orders from seller where Name='{}' and Userid='{}'".format(Split_Data[0],Split_Data[1]))
 			imp=curs.fetchall()
 			impdet=imp[0][0].split("|")

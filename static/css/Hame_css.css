@@ -5,6 +5,12 @@
 #secnavp{
 	color:#3894a1;
 }
+.SecNav{
+	font-size:0.9em;
+}
+.NB{
+	font-size:3em;
+}
 #Secbt{
 	display: block;
   position: relative;
@@ -20,8 +26,8 @@
   border:none;
   outline:none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 10em;
-  font-size: 1em;
+  font-size:1em;
+  /*font-weight: 10em;*/
 }
 #Secbt:hover{
 	border-radius: 0.5em;
@@ -37,8 +43,9 @@
   border:none;
   outline:none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 10em;
-  font-size: 1em;
+  font-size:1em;
+  /*font-weight: 10em;
+  font-size: 1em;*/
 }
 .column{
 	float: left;
