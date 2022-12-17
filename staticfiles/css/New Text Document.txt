@@ -1,0 +1,7 @@
+<!--<a class="{% block meta_description %}{% endblock %}" href="{% url 'Home' %}"><i class="fa-solid fa-house"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>HOME</b></p></a>-->
+
+<!--<a href="{% url 'Cart'%}" class="{% block meta_description1 %}{% endblock %}"><i class="fa-solid fa-cart-shopping"></i><p style="display: inline-block;margin:0; padding:0; padding-left:0.5em;"><b>CART</b></p></a>-->
+
+<i class="fa-solid fa-mobile" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Mobiles</p>
+
+<a href="{% url 'Mobile'%}"  style="padding:0.5em;margin:0.5em;"><i class="fa-solid fa-mobile" style="color:white;display:inline;margin:0; padding:0;padding-left:0.5em;padding-right:0.5em;"></i><p style="color:white;display:inline;padding:0;margin:0;padding-right:0.5em;">Mobiles</p></a>

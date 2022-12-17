@@ -1,0 +1,75 @@
+body{
+	background-image: url("/static/images/Logo.e0d30825a3e4.png");
+	background-repeat: no-repeat;
+	background-color: #050220;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	margin: 0;
+	padding: 0;
+	background-position: 1em 8em;
+}
+#Pd{
+	margin-top: 2em;
+	margin-left: 10em;
+	font-family: 'Montserrat', sans-serif;
+}
+input{
+	color: white;
+	border-color: #6B5B19;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.5em;
+	margin-bottom: 1em;
+	background: transparent;
+}
+input[type = text]{
+	border: none;
+	border-bottom: 0.1em solid;
+	outline: none;
+}
+input[type = password]{
+	border: none;
+	border-bottom: 0.1em solid;
+	outline: none;
+}
+input[type = submit]{
+	border-width: 0.01em;
+	border-radius: 0.1em;
+	background-color: #4AC112;
+}
+select{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.3em;
+	margin-bottom: 1em;
+	background: transparent;
+}
+.column{
+	float: left;
+}
+.column.side{
+	/*background-image: url("/static/images/Logo1.460c07d10495.png");
+	background-position: left;
+	background-repeat: no-repeat;
+	background-color: #050220;*/
+	display: inline;
+	width: 65%;
+}
+.column.middle{
+	/*background-color: #050220;*/
+	display: inline;
+	max-height: 100%;
+	max-width: 100%;
+	width: 30%;
+}
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+@media screen and (max-width: 1280px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+.row{
+	/*margin-top: 10em;*/
+}
