@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
-    #'corsheaders',
+    'corsheaders',
     'MY_STUFF',
 ]
 
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    #'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'MY_WEB.urls'
@@ -134,6 +134,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'Media
 
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+CSRF_TRUSTED_ORIGINS = ['https://domain.name']
 #CSRF_TRUSTED_ORIGINS = ['https://*.domain.name']
 
 
