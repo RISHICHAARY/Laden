@@ -135,7 +135,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'Media
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 #CSRF_TRUSTED_ORIGINS = ['https://domain.name']
-CSRF_TRUSTED_ORIGINS = ['https://*.domain.name']
+#CSRF_TRUSTED_ORIGINS = ['https://*.domain.name']
 #CSRF_TRUSTED_ORIGINS = [‘https://web-production-5735.up.railway.app’]
 
 
