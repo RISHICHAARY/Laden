@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'corsheaders',
     'MY_STUFF',
 ]
 
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'MY_WEB.urls'
@@ -131,6 +133,8 @@ STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'Media'),]
 
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+CSRF_TRUSTED_ORIGINS = ['https://*.domain.name']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
